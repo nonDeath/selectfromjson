@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+ <select name="my_select1" id="my_select1" class="any_decoration" data-url="http://localhost/gengar/gl/ddjj/src/public/api/v1/provincias.json?id=56" data-autoload="true" data-value="id" data-text="nombre">
+ </select>
+ <input name="my_select"/>
+ <select name="my_select2" id="my_select2" class="any_decoration" data-url="http://localhost/gengar/gl/ddjj/src/public/api/v1/localidades.json" data-autoload="false" data-parent="#my_select1" data-value="id" data-text="nombre">
+ </select>
+
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.jsonselect.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#my_select1, #my_select2").jsonselect({
+            events: {
+                success: function() { console.log('success fired!') }
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

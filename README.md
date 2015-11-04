@@ -32,3 +32,13 @@ $("#my_select1").jsonselect({
 *Events*
 
 - succes: closure to manage the succes event that exposes the plugin. Only fired when the ajax request is successful.
+
+## Instalation
+
+Just add into your package.json the next dependency:
+
+```
+"jsonselect": "git+https://github.com/nonDeath/selectfromjson"
+```
+
+And then run npm update or npm install.

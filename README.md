@@ -32,6 +32,8 @@ $("#my_select1").jsonselect({
 *Events*
 
 - succes: closure to manage the succes event that exposes the plugin. Only fired when the ajax request is successful.
+- beforeSend: closure to manage the any data or behavior before send the request.
+- error: closure to manage the error event that exposes the plugin. Only fired when the ajax request is not successful.
 
 ## Instalation
 

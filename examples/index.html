@@ -19,6 +19,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#my_select1, #my_select2").jsonselect({
+            empty_text: 'Seleccionar...',
             events: {
                 success: function() { console.log('success fired!') }
             }

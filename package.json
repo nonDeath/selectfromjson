@@ -1,6 +1,6 @@
 {
   "name": "selectfromjson",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fill selects from json resources and manage cascade selects",
   "main": "index.js",
   "directories": {

@@ -46,6 +46,12 @@ var methods = {
                 });
 
                 $.isFunction($self.data('jsonselect').events.success ) && $self.data('jsonselect').events.success.call($self, [data, textStatus, jqXHR]);
+            },
+            beforeSend: function() {
+                $.isFunction($self.data('jsonselect').events.success ) && callback.call($self, [data, textStatus, jqXHR]);
+            },
+            error: function(data, textStatus, jqXHR) {
+                $.isFunction($self.data('jsonselect').events.success ) && callback.call($self, [data, textStatus, jqXHR]);
             }
         });
     }
@@ -90,6 +96,8 @@ $.fn.jsonselect.defaults = {
     empty_text: 'Select an option',
     events: {
         success: null // function(data, textStatus, jqXHR){ return this; }
+        beforeSend: null // function(data, textStatus, jqXHR){ return this; }
+        error: null // function(data, textStatus, jqXHR){ return this; }
     }
 };
 

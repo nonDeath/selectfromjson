@@ -48,10 +48,10 @@ var methods = {
                 $.isFunction($self.data('jsonselect').events.success ) && $self.data('jsonselect').events.success.call($self, [data, textStatus, jqXHR]);
             },
             beforeSend: function() {
-                $.isFunction($self.data('jsonselect').events.success ) && callback.call($self, [data, textStatus, jqXHR]);
+                $.isFunction($self.data('jsonselect').events.beforeSend ) && $self.data('jsonselect').events.beforeSend.call($self);
             },
             error: function(data, textStatus, jqXHR) {
-                $.isFunction($self.data('jsonselect').events.success ) && callback.call($self, [data, textStatus, jqXHR]);
+                $.isFunction($self.data('jsonselect').events.error ) && $self.data('jsonselect').events.error.call($self, [data, textStatus, jqXHR]);
             }
         });
     }
@@ -95,8 +95,8 @@ $.fn.jsonselect.defaults = {
     selected: null,
     empty_text: 'Select an option',
     events: {
-        success: null // function(data, textStatus, jqXHR){ return this; }
-        beforeSend: null // function(data, textStatus, jqXHR){ return this; }
+        success: null, // function(data, textStatus, jqXHR){ return this; }
+        beforeSend: null, // function(data, textStatus, jqXHR){ return this; }
         error: null // function(data, textStatus, jqXHR){ return this; }
     }
 };

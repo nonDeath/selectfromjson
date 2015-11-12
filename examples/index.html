@@ -14,14 +14,17 @@
  </select>
 
 <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="../dist/js/jquery.jsonselect.min.js"></script>
+<!-- <script type="text/javascript" src="../dist/js/jquery.jsonselect.min.js"></script> -->
+<script type="text/javascript" src="../src/jquery.jsonselect.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
         $("#my_select1, #my_select2").jsonselect({
             empty_text: 'Seleccionar...',
             events: {
-                success: function() { console.log('success fired!') }
+                success: function() { console.log('success fired!') },
+                beforeSend: function() { console.log('beforeSend fired!') },
+                error: function() { console.log('error fired!') }
             }
         });
     });

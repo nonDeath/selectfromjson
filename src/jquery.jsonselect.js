@@ -30,28 +30,30 @@ var methods = {
             url: $self.data('url'),
             dataType: 'json',
             data: params,
-            success: function(data, textStatus, jqXHR) {
-                methods._reset($self);
-
+            complete: function (jqXHR, textStatus) {
+                // empty for now
+            },
+            success: function (data, textStatus, jqXHR) {
                 var options = $(data).map(function () {
-                    var value = $self.data('value'),
-                        text = $self.data('text');
+                    var value = this[$self.data('value')],
+                        text = this[$self.data('text')];
 
-                    $self.
-                        append(
+                    if (text) {
+                        $self.append(
                             $('<option>').
-                            val(this[value]).
-                            text(this[text])
-                    );
+                            val(value).
+                            text(text)
+                        );
+                    }
                 });
 
                 $.isFunction($self.data('jsonselect').events.success ) && $self.data('jsonselect').events.success.call($self, [data, textStatus, jqXHR]);
             },
-            beforeSend: function() {
-                $.isFunction($self.data('jsonselect').events.beforeSend ) && $self.data('jsonselect').events.beforeSend.call($self);
+            beforeSend: function (jqXHR, settings) {
+                methods._reset($self);
             },
-            error: function(data, textStatus, jqXHR) {
-                $.isFunction($self.data('jsonselect').events.error ) && $self.data('jsonselect').events.error.call($self, [data, textStatus, jqXHR]);
+            error: function (jqXHR, textStatus, errorThrown) {
+                $.isFunction($self.data('jsonselect').events.error ) && $self.data('jsonselect').events.error.call($self, [jqXHR, textStatus, errorThrown]);
             }
         });
     }
@@ -96,7 +98,6 @@ $.fn.jsonselect.defaults = {
     empty_text: 'Select an option',
     events: {
         success: null, // function(data, textStatus, jqXHR){ return this; }
-        beforeSend: null, // function(data, textStatus, jqXHR){ return this; }
         error: null // function(data, textStatus, jqXHR){ return this; }
     }
 };

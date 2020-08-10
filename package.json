@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/nonDeath/selectfromjson#readme",
   "dependencies": {
-    "jquery": "^2.2.2"
+    "jquery": "^3.5.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
